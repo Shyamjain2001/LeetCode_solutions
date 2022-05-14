@@ -1,10 +1,10 @@
 import copy
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
         op,res=[],[]
         def go(nums,op,res):
             if len(nums)==0:
-                op.sort()
                 if op not in res:
                     res.append(op)
                 return 
