@@ -2,22 +2,34 @@
 
 
 class Solution:
-   def nextLargerElement(self,arr,n):
-       #code here
-       stack = []
-       answer = [0 for _ in range(n)]
-       for index in range(n-1, -1, -1):
-           while stack and stack[-1] <= arr[index]:
-               stack.pop()
-           temp = arr[index]
-           if not stack:
-               arr[index] = -1
-           else:
-               arr[index] = stack[-1]
-           
-           stack.append(temp)
-       return arr
-    
+    def nextLargerElement(self,arr,n):
+        lst=arr
+        vect=[]
+        stk=[]
+        n=len(lst)
+        for i in range(n-1,-1,-1):
+            if stk==[]:
+                vect.append(-1)
+                stk.append(lst[i])
+            elif stk[-1]>=lst[i]:
+                vect.append(stk[-1])
+                stk.append(lst[i])
+            else:
+                while len(stk)>=0:
+                    if len(stk)==0:
+                        vect.append(-1)
+                        stk.append(lst[i])
+                        break
+                    t=stk.pop()
+                    if t>=lst[i]:
+                        vect.append(t)
+                        stk.append(t)
+                        stk.append(lst[i])
+                        break
+        k=[]
+        for i in range(n-1,-1,-1):
+            k.append(vect[i])
+        return k 
                         
                         
                     
